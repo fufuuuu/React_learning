@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-
-
+function FormattedDate(props) {
+  return <h2>现在是 {props.date.toLocaleTimeString()}. </h2>;
+}
 
 class ShoppingList extends React.Component {
   render() {
@@ -25,7 +26,7 @@ class Square extends React.Component {
   constructor(props) {
     super(props);
     this.state= {
-      value: null,
+      value: null,  //初始化value
     }
   }
   render() {
@@ -67,12 +68,42 @@ class Board extends React.Component {
   }
 }
 
+//define Clock Component
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+//mount : 钩子函数
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),1000
+    );
+  }
+
+  tick() {
+    this.setState(
+      {date: new Date()}
+    );
+  }
+  render() {
+    return (
+      <div>
+        <FormattedDate date ={this.state.date} />
+      </div>
+    )
+  }
+
+}
+
 //0.0  疑惑点：组件构建手法类似于闭包？？？
 class Game extends React.Component {
+
   render() {
     return (
       //调用模块从这里开始！！！
       <div className="game">
+        <Clock />
         <ShoppingList name='Mark'/>
         <div className="game-board">
           <Board />
