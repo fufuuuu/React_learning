@@ -13,7 +13,7 @@ Install Git: https://git-scm.com/
 Run command:
 
 git config --global user.name "Your Name"
-git config --global user.email your_ebay_email@example.com
+git config --global user.email your_email@example.com
 # Run on Windows only, no need to run on MacOS.
 git config --global core.autocrlf false
 You need configure SSH to GitHub, reference link: https://www.cnblogs.com/hukai46/p/5489631.html.
@@ -48,7 +48,7 @@ code --install-extension shinnn.stylelint
 code --install-extension sysoev.language-stylus
 code --install-extension techer.open-in-browser
 code --install-extension vincaslt.highlight-matching-tag
-code --install-extension Zignd.html-css-class-completion
+[code]code --install-extension Zignd.html-css-class-completion
 
 //可能会遇到找不到code --指令，需要打开cmd Palette 来将vscode加入本地环境
 
