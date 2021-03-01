@@ -2,52 +2,53 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function FormattedDate(props) {
-  return <h2>现在是 {props.date.toLocaleTimeString()}. </h2>;
+function Square(props) {
+  return (
+    <button className="square" onClick={props.onClick}>
+      {props.value}
+    </button>
+  );
 }
 
-class ShoppingList extends React.Component {
-  render() {
-    return (
-      <div className="shopping-list">
-        <h1>Shopping List for {this.props.name}</h1>
-        <ul>
-          <li>Instagram</li>
-          <li>WhatsApp</li>
-          <li>Oculus</li>
-        </ul>
-      </div>
-    );
-  }
-}
-
-class Square extends React.Component {
-  //利用state来实现记忆的功能
+class Clock extends React.Component {
   constructor(props) {
     super(props);
-    this.state= {
-      value: null,  //初始化value
-    }
+    this.state = {date: new Date()};
   }
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
   render() {
     return (
-      <button className="square" onClick={() => this.setState({value: 'X'})}>
-        {this.state.value}
-      </button>
+      <div>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
     );
   }
 }
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square value={i} />;
+    return (
+      <Square
+        value={this.props.squares[i]}
+        onClick={() => this.props.onClick(i)}
+      />
+    );
   }
 
   render() {
-    const status = 'Next player: X';
     return (
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -68,58 +69,107 @@ class Board extends React.Component {
   }
 }
 
-//define Clock Component
-class Clock extends React.Component {
+class Game extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {date: new Date()};
-  }
-//mount : 钩子函数
-  componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),1000
-    );
+    this.state = {
+      history: [
+        {
+          squares: Array(9).fill(null)
+        }
+      ],
+      stepNumber: 0,
+      xIsNext: true
+    };
   }
 
-  tick() {
-    this.setState(
-      {date: new Date()}
-    );
+  handleClick(i) {
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const current = history[history.length - 1];
+    const squares = current.squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+    squares[i] = this.state.xIsNext ? "X" : "O";
+    this.setState({
+      history: history.concat([
+        {
+          squares: squares
+        }
+      ]),
+      stepNumber: history.length,
+      xIsNext: !this.state.xIsNext
+    });
   }
+
+  jumpTo(step) {
+    this.setState({
+      stepNumber: step,
+      xIsNext: (step % 2) === 0
+    });
+  }
+
   render() {
+    const history = this.state.history;
+    const current = history[this.state.stepNumber];
+    const winner = calculateWinner(current.squares);
+
+    const moves = history.map((step, move) => {
+      const desc = move ?
+        'Go to move #' + move :
+        'Go to game start';
+      return (
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        </li>
+      );
+    });
+
+    let status;
+    if (winner) {
+      status = "Winner: " + winner;
+    } else {
+      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+    }
+
     return (
-      <div>
-        <FormattedDate date ={this.state.date} />
-      </div>
-    )
-  }
-
-}
-
-//0.0  疑惑点：组件构建手法类似于闭包？？？
-class Game extends React.Component {
-
-  render() {
-    return (
-      //调用模块从这里开始！！！
       <div className="game">
-        <Clock />
-        <ShoppingList name='Mark'/>
         <div className="game-board">
-          <Board />
+          <Board
+            squares={current.squares}
+            onClick={i => this.handleClick(i)}
+          />
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+          <Clock date={new Date()} />
+          <div>{status}</div>
+          <ol>{moves}</ol>
         </div>
       </div>
     );
   }
 }
 
-// 渲染生成dom树
+// ========================================
 
-ReactDOM.render(
-  <Game />,
-  document.getElementById('root')
-);
+ReactDOM.render(<Game />, document.getElementById("root"));
+
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
