@@ -23,32 +23,32 @@ You need configure SSH to GitHub, reference link: https://www.cnblogs.com/hukai4
 
 #VSCode Extensions
 Install Visual Studio Code Extensions (Paste all to run in cli):
-
-code --install-extension abusaidm.html-snippets
-code --install-extension christian-kohler.path-intellisense
-code --install-extension Compulim.indent4to2
-code --install-extension dariofuzinato.vue-peek
-code --install-extension dbaeumer.vscode-eslint
-code --install-extension donjayamanne.githistory
-code --install-extension dsznajder.es7-react-js-snippets
-code --install-extension eamodio.gitlens
-code --install-extension EditorConfig.EditorConfig
-code --install-extension esbenp.prettier-vscode
-code --install-extension formulahendry.auto-rename-tag
-code --install-extension jasonnutter.search-node-modules
-code --install-extension mikestead.dotenv
-code --install-extension ms-python.python
-code --install-extension ms-vscode.   vscode-typescript-tslint-plugin
-code --install-extension msjsdiag.debugger-for-chrome
-code --install-extension octref.vetur
-code --install-extension PKief.material-icon-theme
-code --install-extension Shan.code-settings-sync
-code --install-extension shardulm94.trailing-spaces
-code --install-extension shinnn.stylelint
-code --install-extension sysoev.language-stylus
-code --install-extension techer.open-in-browser
-code --install-extension vincaslt.highlight-matching-tag
-[code]code --install-extension Zignd.html-css-class-completion
-
+‘’‘
+code --install-extension abusaidm.html-snippets  
+code --install-extension christian-kohler.path-intellisense  
+code --install-extension Compulim.indent4to2  
+code --install-extension dariofuzinato.vue-peek  
+code --install-extension dbaeumer.vscode-eslint  
+code --install-extension donjayamanne.githistory  
+code --install-extension dsznajder.es7-react-js-snippets  
+code --install-extension eamodio.gitlens  
+code --install-extension EditorConfig.EditorConfig  
+code --install-extension esbenp.prettier-vscode  
+code --install-extension formulahendry.auto-rename-tag  
+code --install-extension jasonnutter.search-node-modules  
+code --install-extension mikestead.dotenv  
+code --install-extension ms-python.python  
+code --install-extension ms-vscode.   vscode-typescript-tslint-plugin  
+code --install-extension msjsdiag.debugger-for-chrome  
+code --install-extension octref.vetur  
+code --install-extension PKief.material-icon-theme  
+code --install-extension Shan.code-settings-sync  
+code --install-extension shardulm94.trailing-spaces  
+code --install-extension shinnn.stylelint  
+code --install-extension sysoev.language-stylus  
+code --install-extension techer.open-in-browser  
+code --install-extension vincaslt.highlight-matching-tag  
+code --install-extension Zignd.html-css-class-completion  
+’‘’
 //可能会遇到找不到code --指令，需要打开cmd Palette 来将vscode加入本地环境
 
