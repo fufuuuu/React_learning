@@ -106,7 +106,3 @@ React元素同html标签元素一样，可以响应事件，语法要求：
 3. 需要显示调用 prevent default 方法来阻止默认行为
 4. 在JavaScript中，类的方法默认不会绑定this，所以如果直接在react元素的响应事件方法中访问this，得到的值是undefined。因此，需要通过bind绑定  
 详见index.html代码文件中button的调用  
-
-
-
-
