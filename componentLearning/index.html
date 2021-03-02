@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      class Welcome extends React.Component {
+        render() {
+          return <h1>Welcome</h1>;
+        }
+      }
+      //在构造函数中绑定
+      // class Foo extends React.Component {
+      //   constructor(props) {
+      //     super(props);
+      //     this.handleClick = this.handleClick.bind(this);
+      //   }
+      //   handleClick() {
+      //     console.log('Click happened');
+      //   }
+      //   render() {
+      //     return <button onClick={this.handleClick}>Click Me</button>;
+      //   }
+      // }
+      //直接在render()中绑定,But在render()中使用 Function.prototype.bind 和 箭头函数 都会在每次组件渲染时创建一个新的函数, 这会影响性能。
+      /*
+      class Foo extends Component {
+        handleClick() {
+          console.log('Click happened');
+        }
+        render() {
+          return <button onClick={this.handleClick.bind(this)}>Click Me</button>;
+        }
+      }
+      */
+     //用箭头函数来替代绑定
+     class LoginButton extends React.Component {
+       handleClick() {
+         console.log('this is', this);
+       }
+
+       render() {
+         return (
+           <button onClick={(e) => this.handleClick(e)}>Login</button>
+         );
+       }
+     }
+
+
+      ReactDOM.render(
+        <div>
+          <Welcome />
+          Hello World!
+          <div><LoginButton /></div>
+        </div>,
+        document.getElementById('root')
+      );
+    </script>
+  </body>
+</html>
