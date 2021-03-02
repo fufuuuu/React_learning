@@ -21,7 +21,7 @@ You need configure SSH to GitHub, reference link: https://www.cnblogs.com/hukai4
 [Recommend] Install a Git GUI tool (For example SourceTree: https://www.sourcetreeapp.com/ )
 
 
-#VSCode Extensions
+# VSCode Extensions
 Install Visual Studio Code Extensions (Paste all to run in cli):
 ```
 code --install-extension abusaidm.html-snippets  
@@ -52,8 +52,8 @@ code --install-extension Zignd.html-css-class-completion
 ```
 //可能会遇到找不到code --指令，需要打开cmd Palette 来将vscode加入本地环境
 
-##确认vscode配置成功后，就可以开始开发第一个属于自己的app了  
-1.’npx create-react-app my-app‘  
+## 确认vscode配置成功后，就可以开始开发第一个属于自己的app了  
+1.`npx create-react-app my-app`  
 2.删除掉新项目中 src/ 文件夹下的所有文件。  
 ```
 cd my-app
