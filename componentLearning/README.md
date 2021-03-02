@@ -26,10 +26,10 @@ state的更新会被合并
 
 当组件的状态发生变化时，组件会再次调用render()方法重新渲染。
 
-# React组件生命周期
+# React组件生命周期  
 `分为三个阶段：挂载阶段、更新阶段和卸载阶段`
 #### 挂载阶段：组件即将开始被添加到DOM阶段。(初始化阶段)
-- 设置组件的默认属性
+- 设置组件的默认属性  
 ```
 static defaultProps = {
     name: 'sls',
@@ -39,7 +39,7 @@ static defaultProps = {
 Counter.defaltProps={name:'default name'}
 ```
 
-- 设置组件的初始化形态
+- 设置组件的初始化形态  
 ```
 constructor() {
     super();
@@ -47,20 +47,20 @@ constructor() {
 }
 ```
 
-- componentWillMount()
+- componentWillMount()  
 `组件即将被渲染到页面之前触发，此时可以进行开启定时器、向服务器发送请求等操作`
 
-- render()
+- render()  
 `组件渲染`
 
-- componentDidMount()
+- componentDidMount()  
 `组件已经被渲染到页面中后触发：此时页面中有了真正的DOM的元素，可以进行DOM相关的操作`
 
-##### 更新阶段：一旦组件被添加到DOM，它只有在 props 或state发生变化时才可能更新和重新渲染。(运行中阶段)
-- componentWillRecieveProps()
+#### 更新阶段：一旦组件被添加到DOM，它只有在 props 或state发生变化时才可能更新和重新渲染。(运行中阶段)
+- componentWillRecieveProps()  
 `组件接收到属性时触发`
 
-- shouldComponentUpdate()
+- shouldComponentUpdate()  
 ```
 当组件接收到新属性，或者组件的状态发生改变时触发。组件首次渲染时并不会触发
 shouldComponentUpdate(newProps, newState) {
@@ -95,7 +95,6 @@ shouldComponentUpdate(newProps, newState) {
 6. componentDidUpdate() – 在渲染发生后立即调用。
 7. componentWillUnmount() – 从 DOM 卸载组件后调用。用于清理内存空间。
 
-# React生命周期
 
 
 # React组件事件处理
