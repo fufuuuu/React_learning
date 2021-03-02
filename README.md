@@ -52,3 +52,32 @@ code --install-extension Zignd.html-css-class-completion
 ’‘’
 //可能会遇到找不到code --指令，需要打开cmd Palette 来将vscode加入本地环境
 
+##确认vscode配置成功后，就可以开始开发第一个属于自己的app了  
+1.’npx create-react-app my-app‘  
+2.删除掉新项目中 src/ 文件夹下的所有文件。  
+‘’‘  
+cd my-app
+cd src
+
+# 如果你使用 Mac 或 Linux:
+rm -f *
+
+# 如果你使用 Windows:
+del *
+
+# 然后回到项目文件夹
+cd ..  
+‘’‘  
+3.在 src/ 文件夹中创建一个名为 index.css 的文件
+4.在 src/ 文件夹中创建一个名为 index.js 的文件
+5.拷贝以下三行代码到 src/ 文件夹下的 index.js 文件的顶部：
+‘’‘  
+import React from 'react';  
+import ReactDOM from 'react-dom';  
+import './index.css';  
+’‘’
+
+cd到当前#####项目文件夹目录下  终端中输入‘npm start’
+在浏览器中访问‘http://localhost:3000’
+
+
