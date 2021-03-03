@@ -1,3 +1,4 @@
+// A model of components` lifecycle
 import React from 'react'
 import ReactDOM from 'react-dom';
 

@@ -1,8 +1,8 @@
 # React 组件
 react组件使用 `render()` 接收输入的数据并返回需要展示的内容，展示的内容由react元素构成。  
 
-1.创建一个继承于React.Componente的class
-2.创建render()方法并实现  
+1. 创建一个继承于React.Componente的class
+2. 创建render()方法并实现  
 ```
 class Welcome extends React.Component {
   render() {
@@ -20,9 +20,9 @@ React元素会将 JSX 所接收的属性（attributes）转换为单个对象传
 组件的props属性是**只读的**，它们总是在整个应用中从父组件传递到子组件。子组件永远不能将 prop 送回父组件。**这有助于维护单向数据流。即组件不能修改自身的props。**
 组件的state属性是私有的，并且完全受控于当前组件。随用户操作、网络响应或者其他变化而需要动态更新UI的可以通过更新其state来实现。
 
-**修改this.state需要通过this.setState()方法，不要直接修改this.state**
+**修改this.state需要通过this.setState()方法，不要直接修改this.state**  
 state的更新可能是异步的
-state的更新会被合并
+state的更新会被合并  
 
 当组件的状态发生变化时，组件会再次调用render()方法重新渲染。
 

@@ -14,7 +14,7 @@ Run command:
 
 git config --global user.name "Your Name"
 git config --global user.email your_email@example.com
-# Run on Windows only, no need to run on MacOS.
+#### Run on Windows only, no need to run on MacOS.
 git config --global core.autocrlf false
 You need configure SSH to GitHub, reference link: https://www.cnblogs.com/hukai46/p/5489631.html.
 
