@@ -38,7 +38,7 @@ code --install-extension formulahendry.auto-rename-tag
 code --install-extension jasonnutter.search-node-modules  
 code --install-extension mikestead.dotenv  
 code --install-extension ms-python.python  
-code --install-extension ms-vscode.   vscode-typescript-tslint-plugin  
+code --install-extension ms-vscode.vscode-typescript-tslint-plugin  
 code --install-extension msjsdiag.debugger-for-chrome  
 code --install-extension octref.vetur  
 code --install-extension PKief.material-icon-theme  
