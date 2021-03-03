@@ -1,87 +1,173 @@
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 
-class SubCounter extends React.Component {
-    componentWillReceiveProps() {
-        console.log('9、子组件将要接收到新属性');
-    }
-
-    shouldComponentUpdate(newProps, newState) {
-        console.log('10、子组件是否需要更新');
-        if (newProps.number < 5) return true;
-        return false
-    }
-
-    componentWillUpdate() {
-        console.log('11、子组件将要更新');
-    }
-
-    componentDidUpdate() {
-        console.log('13、子组件更新完成');
-    }
-
-    componentWillUnmount() {
-        console.log('14、子组件将卸载');
-    }
-
-    render() {
-        console.log('12、子组件挂载中');
-        return (
-                <p>{this.props.number}</p>
-        )
-    }
+function Square(props) {
+  return (
+    <button className="square" onClick={props.onClick}>
+      {props.value}
+    </button>
+  );
 }
 
-class Counter extends React.Component {
-    static defaultProps = {
-        //1、加载默认属性
-        name: 'sls',
-        age:23
-    };
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
 
-    constructor() {
-        super();
-        //2、加载默认状态
-        this.state = {number: 0}
-    }
-
-    componentWillMount() {
-        console.log('3、父组件挂载之前');
-    }
-
-    componentDidMount() {
-        console.log('5、父组件挂载完成');
-    }
-
-    shouldComponentUpdate(newProps, newState) {
-        console.log('6、父组件是否需要更新');
-        if (newState.number<15) return true;
-        return false
-    }
-
-    componentWillUpdate() {
-        console.log('7、父组件将要更新');
-    }
-
-    componentDidUpdate() {
-        console.log('8、父组件更新完成');
-    }
-
-    handleClick = () => {
-        this.setState({
-            number: this.state.number + 1
-        })
-    };
-
-    render() {
-        console.log('4、render(父组件挂载)');
-        return (
-            <div>
-                <p>{this.state.number}</p>
-                <button onClick={this.handleClick}>+</button>
-                {this.state.number<10?<SubCounter number={this.state.number}/>:null}
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
 }
-ReactDOM.render(<Counter/>, document.getElementById('root'));
+
+class Board extends React.Component {
+  renderSquare(i) {
+    return (
+      <Square
+        value={this.props.squares[i]}
+        onClick={() => this.props.onClick(i)}
+      />
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="board-row">
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
+      </div>
+    );
+  }
+}
+
+class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      history: [
+        {
+          squares: Array(9).fill(null)
+        }
+      ],
+      stepNumber: 0,
+      xIsNext: true
+    };
+  }
+
+  handleClick(i) {
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const current = history[history.length - 1];
+    const squares = current.squares.slice();
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+    squares[i] = this.state.xIsNext ? "X" : "O";
+    this.setState({
+      history: history.concat([
+        {
+          squares: squares
+        }
+      ]),
+      stepNumber: history.length,
+      xIsNext: !this.state.xIsNext
+    });
+  }
+
+  jumpTo(step) {
+    this.setState({
+      stepNumber: step,
+      xIsNext: (step % 2) === 0
+    });
+  }
+
+  render() {
+    const history = this.state.history;
+    const current = history[this.state.stepNumber];
+    const winner = calculateWinner(current.squares);
+
+    const moves = history.map((step, move) => {
+      const desc = move ?
+        'Go to move #' + move :
+        'Go to game start';
+      return (
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        </li>
+      );
+    });
+
+    let status;
+    if (winner) {
+      status = "Winner: " + winner;
+    } else {
+      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+    }
+
+    return (
+      <div className="game">
+        <div className="game-board">
+          <Board
+            squares={current.squares}
+            onClick={i => this.handleClick(i)}
+          />
+        </div>
+        <div className="game-info">
+          <Clock date={new Date()} />
+          <div>{status}</div>
+          <ol>{moves}</ol>
+        </div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Game />, document.getElementById("root"));
+
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
