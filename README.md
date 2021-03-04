@@ -50,7 +50,7 @@ code --install-extension techer.open-in-browser
 code --install-extension vincaslt.highlight-matching-tag  
 code --install-extension Zignd.html-css-class-completion  
 ```
-//可能会遇到找不到code --指令，需要打开cmd Palette 来将vscode加入本地环境
+**可能会遇到找不到code --指令，需要打开cmd Palette 来将vscode加入本地环境**
 
 ## 确认vscode配置成功后，就可以开始开发第一个属于自己的app了  
 1. `npx create-react-app my-app`  
@@ -80,7 +80,7 @@ import ReactDOM from 'react-dom';
 import './index.css';  
 ```
 
-cd到当前#####项目文件夹目录下  终端中输入`npm start`
+cd到当前项目文件夹目录下  终端中输入`npm start`
 在浏览器中访问`http://localhost:3000`
 
 

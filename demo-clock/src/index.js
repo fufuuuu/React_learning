@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
+class AutoFocusInput extends Component {
+  componentDidMount () {
+    this.input.focus()
+  }
+  render () {
+    return (
+      <input ref={(input) => this.input = input} />
+    )
+  }
+}
 class Clock extends Component {
   constructor() {
     super()
@@ -22,6 +32,7 @@ class Clock extends Component {
   render() {
     return(
       <div className='demo-clock'>
+        <AutoFocusInput/>
         <p>It is {this.state.date.toLocaleTimeString()} now.</p>
       </div>
     );
