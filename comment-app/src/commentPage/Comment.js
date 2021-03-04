@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import LikeButton from '../likeButton/LikeButton'
 
 class Comment extends Component {
   render() {
@@ -8,6 +9,8 @@ class Comment extends Component {
           <span>{this.props.comment.username}</span>:
         </div>
         <p>{this.props.comment.content}</p>
+        <div className='comment-like'><LikeButton></LikeButton></div>
+        
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Comment from './Comment'
 class CommentList extends Component {
   static defaultProps = {
-    comments: []
+    comments: [{username:'zjf',  content:'its a good day'}]
   }
   render() {
     return (

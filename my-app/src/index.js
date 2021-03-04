@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import LikeButton from './component/LikeButton';
 import './index.css';
 
 function Square(props) {
@@ -10,21 +11,16 @@ function Square(props) {
   );
 }
 
-class Clock extends React.Component {
+
+class Clock extends Component {
   constructor(props) {
     super(props);
     this.state = {date: new Date()};
   }
-  componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
-  }
-  tick() {
-    this.setState({
-      date: new Date()
-    });
+  componentWillMount() {
+    this.timeID = setInterval(() => {
+      this.setState({date: new Date()})
+    }, 1000)
   }
 
   render() {
@@ -36,7 +32,7 @@ class Clock extends React.Component {
   }
 }
 
-class Board extends React.Component {
+class Board extends Component {
   renderSquare(i) {
     return (
       <Square
@@ -69,7 +65,7 @@ class Board extends React.Component {
   }
 }
 
-class Game extends React.Component {
+class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -101,7 +97,9 @@ class Game extends React.Component {
       xIsNext: !this.state.xIsNext
     });
   }
-
+  handleClickBt(e) {
+    console.log('star!')
+  }
   jumpTo(step) {
     this.setState({
       stepNumber: step,
@@ -141,6 +139,7 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
+          <LikeButton />
           <Clock date={new Date()} />
           <div>{status}</div>
           <ol>{moves}</ol>

@@ -102,3 +102,14 @@ body {
   margin: 0;
   text-indent: 2em;
 }
+
+.comment .comment-like button{
+  padding: 5px 10px;
+    width: 80px;
+    border: none;
+    border-radius: 3px;
+    background-color: #00a3cf;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+}
