@@ -122,8 +122,7 @@ class Game extends Component {
           <li key={move}>
             <button onClick={() => this.jumpTo(move)}>{desc}</button>
           </li>
-        }
-        ></Card>
+        }></Card>
       );
     });
 
