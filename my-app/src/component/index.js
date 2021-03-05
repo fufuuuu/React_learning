@@ -1,7 +1,6 @@
 // A model of components` lifecycle
 import React from 'react'
-import ReactDOM from 'react-dom';
-
+import ReactDom from 'react-dom'
 class SubCounter extends React.Component {
     componentWillReceiveProps() {
         console.log('9、子组件将要接收到新属性');
@@ -85,4 +84,4 @@ class Counter extends React.Component {
         )
     }
 }
-ReactDOM.render(<Counter/>, document.getElementById('root'));
+ReactDom.render(<Counter/>, document.getElementById('root'));

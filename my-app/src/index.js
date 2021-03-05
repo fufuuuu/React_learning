@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Card from './component/Card';
 import LikeButton from './component/LikeButton';
 import './index.css';
 
@@ -117,9 +118,12 @@ class Game extends Component {
         'Go to move #' + move :
         'Go to game start';
       return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
+        <Card content={
+          <li key={move}>
+            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          </li>
+        }
+        ></Card>
       );
     });
 

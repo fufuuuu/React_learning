@@ -13,7 +13,7 @@ class LikeButton extends Component {
   render () {
     return (
       <button onClick={this.handleClickOnLikeButton.bind(this)}>
-        {this.state.isLiked ? '取消' : '点赞'} 👍
+        {this.state.isLiked ? '已赞' : '点赞'} 👍
       </button>
     )
   }
