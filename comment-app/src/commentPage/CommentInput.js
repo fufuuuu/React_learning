@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-
+import PropTypes from 'prop-types'
 class CommentInput extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func
+  }
   constructor () {
     super()
     this.state={
@@ -28,6 +31,29 @@ class CommentInput extends Component {
     }
     this.setState({content: ''})
   }
+
+  handleOnBlur (e) {
+    this._saveUserName(e.target.value)
+  }
+//将用户名保存在localstorage中
+  _saveUserName(username) {
+    localStorage.setItem('username', username)
+  }
+
+  _loadUsername() {
+    const username = localStorage.getItem('username')
+    if(username) {
+      this.setState({ username })
+    }
+  }
+  //挂载前从localstorage中读取username
+  componentWillMount() {
+    this._loadUsername()
+  }
+  //挂载时
+  componentDidMount() {
+    this.textarea.focus()
+  }
   render() {
     return (
       <div className='comment-input'>
@@ -37,6 +63,7 @@ class CommentInput extends Component {
             <input
               value={this.state.username}
               onChange={this.handleUsernameChange.bind(this)}
+              onBlur={this.handleOnBlur.bind(this)}
             />
           </div>
         </div>
@@ -46,6 +73,7 @@ class CommentInput extends Component {
             <textarea
               value={this.state.content}
               onChange={this.handleContentChange.bind(this)}
+              ref={(textarea) => this.textarea = textarea}
             />
           </div>
         </div>
