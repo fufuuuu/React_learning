@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import wrapWithLoadData from './wrapWithLoadData'
 class CommentInput extends Component {
   static propTypes = {
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
+    data: PropTypes.any,
+    saveData: PropTypes.func.isRequired
   }
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state={
-      username: '',
+      username: props.data,
       content: '',
       createdTime: ''
     }
@@ -37,12 +40,12 @@ class CommentInput extends Component {
   }
 
   handleOnBlur (e) {
-    this._saveUserName(e.target.value)
+    this.props.saveData(e.target.value)
   }
 //将用户名保存在localstorage中
-  _saveUserName(username) {
-    localStorage.setItem('username', username)
-  }
+  // _saveUserName(username) {
+  //   localStorage.setItem('username', username)
+  // }
 
   _loadUsername() {
     const username = localStorage.getItem('username')
@@ -90,5 +93,5 @@ class CommentInput extends Component {
     )
   }
 }
-
+CommentInput = wrapWithLoadData(CommentInput, 'username')
 export default CommentInput
