@@ -127,3 +127,31 @@ React元素同html标签元素一样，可以响应事件，语法要求：
 - render开头的方法，有时候 render() 方法里面的内容会分开到不同函数里面进行，这些函数都以 render 开头。  
 - render() 方法。  
 如果所有的组件都按这种顺序来编写，那么维护起来就会方便很多，多人协作的时候别人理解代码也会一目了然。  
+
+# Higher Order Components(高阶组件)
+**对组件进行加工处理???事实上常用于给新的组件类做一些数据启动工作**  
+高阶组件就是一个**函数**，传给它一个组件，它返回一个新的组件  
+` const NewComponent = higherOrderComponent(OldComponent) `  
+
+举个栗子：  
+```
+
+import React, { Component } from 'react'
+export default (WrappedComponent, name) => {
+  class NewComponent extends Component {
+    constructor () {
+      super()
+      this.state = { data: null }
+    }
+    componentWillMount () {
+      let data = localStorage.getItem(name)
+      this.setState({ data })
+    }
+    render () {
+      return <WrappedComponent data={this.state.data} />
+    }
+  }
+  return NewComponent
+}
+
+```
