@@ -22,7 +22,7 @@ class Header extends Component {
   }
   render () {
     return (
-      <h1 style={{ color : this.state.themeColor}}>React.js 小书</h1>
+      <h1 style={{ color : this.state.themeColor}}>this is the title and default color is red</h1>
     )
   }
 }
