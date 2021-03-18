@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import Header from './Header'
 import Content from './Content'
+import './index.css'
 
-function createStore (reducer) {
+function createStore(reducer) {
   let state = null
   const listeners = []
   const subscribe = (listener) => listeners.push(listener)
@@ -13,26 +14,32 @@ function createStore (reducer) {
     state = reducer(state, action)
     listeners.forEach((listener) => listener())
   }
-  dispatch({}) // 初始化 state
-  return { getState, dispatch, subscribe }
+  dispatch({})
+  return {getState, dispatch, subscribe}
 }
+
 const themeReducer = (state, action) => {
-  if (!state) return {
-    themeColor: 'red'
+  if(!state) {
+    return{
+      themeColor: 'red'
+    }
   }
-  switch (action.type) {
+  switch (state) {
     case 'CHANGE_COLOR':
-      return { ...state, themeColor: action.themeColor }
+      return {...state, themeColor:action.themeColor}
     default:
       return state
   }
 }
+
 const store = createStore(themeReducer)
+
 class Index extends Component {
   static childContextTypes = {
     store: PropTypes.object
   }
-  getChildContext () {
+
+  getChildContext(){
     return { store }
   }
   render () {
