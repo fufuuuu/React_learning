@@ -24,9 +24,9 @@ const themeReducer = (state, action) => {
       themeColor: 'red'
     }
   }
-  switch (state) {
+  switch (action.type) {
     case 'CHANGE_COLOR':
-      return {...state, themeColor:action.themeColor}
+      return {...state, themeColor: action.themeColor}
     default:
       return state
   }
