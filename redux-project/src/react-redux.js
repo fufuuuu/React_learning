@@ -40,7 +40,7 @@ export const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponen
 export class Provider extends Component {
   static propTypes = {
     store: PropTypes.object,
-    children:PropTypes.any
+    children: PropTypes.any
   }
   static childContext = {
     store: PropTypes.object
@@ -54,7 +54,7 @@ export class Provider extends Component {
 
   render() {
     return(
-      <div>{this.props.children}</div>
+      <div>{ this.props.children }</div>
     )
   }
 }
