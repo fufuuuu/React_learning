@@ -20,5 +20,4 @@ const mapStateToProps = (state) => {
     themeColor: state.themeColor
   }
 }
-Content = connect(mapStateToProps)(Content)
-export default Content
+export default connect(mapStateToProps)(Content)
