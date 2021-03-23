@@ -50,7 +50,7 @@ code --install-extension techer.open-in-browser
 code --install-extension vincaslt.highlight-matching-tag  
 code --install-extension Zignd.html-css-class-completion  
 ```
-**可能会遇到找不到code --指令，需要打开cmd Palette 来将vscode加入本地环境**
+**可能会遇到找不到code --指令，需要打开cmd Palette 来将code加入本地环境**
 
 ## 确认vscode配置成功后，就可以开始开发第一个属于自己的app了  
 1. `npx create-react-app my-app`  
@@ -89,3 +89,14 @@ cd到当前项目文件夹目录下  终端中输入`npm start`
 ` sudo lsof -i :3000 `  
 然后根据PID杀进程：  
 ` sudo kill -9 61342 `（'61342'即pid）
+
+# how to git my commit
+
+1. git stash
+2. git checkout -b jinzeng/update-admin. //'jinzeng/update-admin' can be replaced
+3. git stash pop
+4. git add .
+5. git commit -m "Update admin"
+6. git push -u origin jinzeng/update-admin
+7. Go to github to check and request one of the reviewers to review my commits(Remember to CPR)
+8. Inform the reviewer to review my commits

@@ -1,18 +1,27 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import wrapWithLoadData from './wrapWithLoadData'
-class CommentInput extends Component {
+export default class CommentInput extends Component {
   static propTypes = {
+    username: PropTypes.any,
     onSubmit: PropTypes.func,
-    data: PropTypes.any,
-    saveData: PropTypes.func.isRequired
+    onUserNameInputBlur: PropTypes.func
+  }
+  static defaultProps = {
+    username: ''
   }
   constructor (props) {
     super(props)
-    this.state={
-      username: props.data,
-      content: '',
-      createdTime: ''
+    this.state = {
+      username: props.username, // 从 props 上取 username 字段
+      content: ''
+    }
+  }
+  componentDidMount () {
+    this.textarea.focus()
+  }
+  handleUsernameBlur (event) {
+    if (this.props.onUserNameInputBlur) {
+      this.props.onUserNameInputBlur(event.target.value)
     }
   }
   handleUsernameChange (event) {
@@ -20,14 +29,11 @@ class CommentInput extends Component {
       username: event.target.value
     })
   }
-
   handleContentChange (event) {
     this.setState({
       content: event.target.value
     })
   }
-
-  //子组件向父组件传递参数
   handleSubmit () {
     if (this.props.onSubmit) {
       this.props.onSubmit({
@@ -36,32 +42,9 @@ class CommentInput extends Component {
         createdTime: +new Date()
       })
     }
-    this.setState({content: ''})
+    this.setState({ content: '' })
   }
-
-  handleOnBlur (e) {
-    this.props.saveData(e.target.value)
-  }
-//将用户名保存在localstorage中
-  // _saveUserName(username) {
-  //   localStorage.setItem('username', username)
-  // }
-
-  // _loadUsername() {
-  //   const username = localStorage.getItem('username')
-  //   if(username) {
-  //     this.setState({ username })
-  //   }
-  // }
-  //挂载前从localstorage中读取username
-  // componentWillMount() {
-  //   this._loadUsername()
-  // }
-  //挂载时
-  componentDidMount() {
-    this.textarea.focus()
-  }
-  render() {
+  render () {
     return (
       <div className='comment-input'>
         <div className='comment-field'>
@@ -70,7 +53,7 @@ class CommentInput extends Component {
             <input
               value={this.state.username}
               onChange={this.handleUsernameChange.bind(this)}
-              onBlur={this.handleOnBlur.bind(this)}
+              onBlur={this.handleUsernameBlur.bind(this)}
             />
           </div>
         </div>
@@ -93,5 +76,3 @@ class CommentInput extends Component {
     )
   }
 }
-CommentInput = wrapWithLoadData(CommentInput, 'username')
-export default CommentInput
