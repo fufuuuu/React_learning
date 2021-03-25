@@ -1,6 +1,6 @@
 .navbar {
   display: flex;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  background: white;
   height: 3em;
   justify-content: center;
   align-items: center;

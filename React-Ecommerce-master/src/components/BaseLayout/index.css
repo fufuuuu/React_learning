@@ -2,20 +2,21 @@
   background-color: #F9F6F6;
 }
 
+/* background img*/
 .first-header {
-  background: url('https://preview.ibb.co/j8nRCQ/fashion2.jpg');
+  background: url('https://images.pexels.com/photos/2556295/pexels-photo-2556295.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
 }
 
 .second-header {
-  background: url('https://preview.ibb.co/fm4Cmk/fashion3.jpg');
+  background: url('https://images.pexels.com/photos/5560083/pexels-photo-5560083.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
 }
 
 .third-header {
-  background: url('https://preview.ibb.co/bMsCK5/fashion5.jpg');
+  background: url('https://images.pexels.com/photos/291762/pexels-photo-291762.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500');
 }
 
 .fourth-header {
-  background: url('https://preview.ibb.co/gtsZXQ/fashion6.jpg');
+  background: url('https://images.pexels.com/photos/37631/sewing-thimble-pins-safety-pins-37631.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
 }
 
 .first-header, .second-header, .third-header, .fourth-header {

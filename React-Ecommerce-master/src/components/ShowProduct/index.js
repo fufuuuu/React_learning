@@ -6,6 +6,7 @@ import { Icon } from 'react-materialize';
 //Internals
 import PRODUCTS from '../Data';
 import './index.css';
+import Star from '../BaseLayout/components/stars/star';
 
 class ShowProduct extends Component {
   render () {
@@ -26,15 +27,7 @@ class ShowProduct extends Component {
               <p id="product-price">${currentProduct.price}</p>
               <Icon small id="add-icon">add_shopping_cart</Icon>
             </div>
-            <div className="product-review">
-              <div className="stars">
-                <Icon small id="add-icon">star</Icon>
-                <Icon small id="add-icon">star</Icon>
-                <Icon small id="add-icon">star</Icon>
-                <Icon small id="add-icon">star</Icon>
-                <Icon small id="add-icon">star_half</Icon>
-              </div>
-            </div>
+            <Star />
           </div>
         </div>
         <div className="similar-products">
@@ -45,9 +38,9 @@ class ShowProduct extends Component {
               && product.type === currentProduct.type
               && product.name !== currentProduct.name) {
               return(
-                <Link to={`/products/${product.id}`}>
+                <Link to={`/products/${product.id}&${product.star}`}>
                   <div key={product.id} className="item">
-                    <Link to={`/products/${product.id}`}>
+                    <Link to={`/products/${product.id}&${product.star}`}>
                     <div className="product-img">
                       <img alt={product.name} src={product.img} />
                     </div>
