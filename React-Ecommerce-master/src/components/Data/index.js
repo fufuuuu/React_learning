@@ -9,7 +9,7 @@ const products = [
     img: "https://image.ibb.co/kOhL6k/img1.jpg",
     inCart: false,
     category: "clothes",
-    star: 0,
+    star: 5,
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const products = [
     img: "https://image.ibb.co/nNmKz5/img2.jpg",
     inCart: false,
     category: "clothes",
-    star: 0,
+    star: 2,
   },
   {
     id: 3,

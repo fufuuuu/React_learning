@@ -14,12 +14,14 @@ import Clothes from './components/Clothes';
 import Accessories from './components/Accessories';
 import ShowProduct from './components/ShowProduct';
 import registerServiceWorker from './registerServiceWorker';
+import Login from './components/login';
 
 ReactDOM.render(
   <BrowserRouter>
     <BaseLayout>
       <Switch>
         <Route exact path="/" component={App} />
+        <Route path="/login" component={Login}/>
         <Route path="/cart" component={Cart} />
         <Route path="/women" component={Women}  />
         <Route path="/men" component={Men} />

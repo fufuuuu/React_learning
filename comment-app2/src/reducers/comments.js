@@ -3,6 +3,7 @@ const INIT_COMMENTS = 'INIT_COMMENTS'
 const ADD_COMMENT = 'ADD_COMMENT'
 const DELETE_COMMENT = 'DELETE_COMMENT'
 // reducer
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function (state, action) {
   if (!state) {
     state = { comments: [] }

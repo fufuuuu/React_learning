@@ -11,7 +11,7 @@ const ClothesItems = () => (
       if (product.category === "clothes") {
         return(
           <div className="item">
-            <Link to={`/products/${product.id}`}>
+            <Link to={`/products/${product.id}&${product.star}`}>
             <div className="product-img">
               <img alt={product.name} src={product.img} />
             </div>

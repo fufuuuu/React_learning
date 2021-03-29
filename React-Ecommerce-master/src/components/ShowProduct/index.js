@@ -9,6 +9,13 @@ import './index.css';
 import Star from '../BaseLayout/components/stars/star';
 
 class ShowProduct extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      star : props.star
+    }
+  }
+  
   render () {
     const product = find(PRODUCTS, ['id', parseInt(this.props.match.params.id)]);
     const currentProduct = product;
@@ -27,7 +34,7 @@ class ShowProduct extends Component {
               <p id="product-price">${currentProduct.price}</p>
               <Icon small id="add-icon">add_shopping_cart</Icon>
             </div>
-            <Star />
+            <Star {...product}/>
           </div>
         </div>
         <div className="similar-products">

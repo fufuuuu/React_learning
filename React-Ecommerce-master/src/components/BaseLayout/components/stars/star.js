@@ -3,14 +3,13 @@ import find from 'lodash/find';
 import { Icon } from 'react-materialize';
 import PRODUCTS from '../../../Data';
 
-
 const product = find(PRODUCTS, ['id', 1]);
 
 class Star extends Component{
   constructor (props) {
     super(props)
     this.state = {
-      index : 0
+      index : props.star
      }
   }
   handlestar(ind){
@@ -20,7 +19,6 @@ class Star extends Component{
   }
 
   render() {
-    console.log(product.star)
     return(
       <div className="product-review">
         <div className="stars">
