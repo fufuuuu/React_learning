@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  font-family: sans-serif;
+  background-image: url('https://static.runoob.com/images/mix/gradient2.png');
+  background-repeat: repeat-x;
+}
+
+.footer {
+  position: absolute;
+  margin-top: 55%;
+  height: 3em;
+  background-color: rgb(198, 238, 250);
+  color: black;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: lighter;
+}
+
+.loginCard{
+  margin-top: 15%;
+  margin-right: 15%;
+  padding: 30px;
+  float: right;
+  background-color:rgb(176, 196, 196);
+}
+
+.HintContent{
+  display: flex;
+  justify-content: center;
+  border-color: black;
+}
+
+.MainContent-input{
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.MainContent-input-username{
+  padding: 10px;
+}
+
+.MainContent-input-password{
+  padding: 10px;
+}
+
+.MainContent-buttons{
+  justify-content: center;
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+}
+
+.sign-in{
+  margin-right: 20px;
+}
+
+.sign-up{
+  margin-left: 20px;
+}
