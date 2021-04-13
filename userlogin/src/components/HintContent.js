@@ -11,4 +11,4 @@ class HintContent extends Component {
   }
 }
 
-export default HintContent;
+export default HintContent
