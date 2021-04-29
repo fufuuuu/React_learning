@@ -17,13 +17,6 @@ class MainContent extends Component {
     this.setState({password: event.target.value})
   }
 
-  handleUsernameBlur(event){
-    
-  }
-
-  handleSubmit(){
-
-  }
   render() {
     return(
       <div className="MainContent">
